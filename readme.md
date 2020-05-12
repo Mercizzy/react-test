@@ -115,3 +115,39 @@
 
 1. 引入babel，注意babel更新8.x以后，与之前大不相同
 2. jsx语法
+
+
+
+### Vue中的key
+
+1. 为了保持列表项的状态，见列表选中状态
+
+### React中创建组件
+
+1. 构造函数
+2. class继承React.component
+
+### 两种创建组件方式的对比
+
+> 注意：使用class关键字创建的组件，有自己的私有数据（this.state）和生命周期
+>
+> 注意：使用构造函数创建的组件，纸有props，没有自己的私有数据和生命周期
+
+1. 使用构造函数创建的组件，叫做无状态组件
+2. 使用class关键字创建的组件，叫做有状态组件
+3. 本质区别就是：有无state属性和有无生命周期函数
+4. 组件中的`props`和`state/data`之间的区别
+   + props是外界传递，state是组件私有的
+   + props是只读属性。state可写可读
+
+### webpack配置css模块化
+
+```js
+//在css-loader后追加参数modules，可以为普通css样式启用模块化
+//但是只对类选择器和Id选择器生效
+{ 
+  test: /\.css$/,
+  use: [ 'style-loader', 'css-loader?modules' ]
+}
+```
+

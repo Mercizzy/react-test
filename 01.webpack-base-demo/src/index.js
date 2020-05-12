@@ -2,16 +2,41 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-// 2.创建虚拟DOM元素
-let a = 10
-let arrStr = ['apple', 'orange', 'pear']
+class ClickBox extends React.Component{
+  constructor() {
+    super()
+
+    this.state = {
+      count: 0,
+      str: 'hello'
+    }
+    // this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    // this.setState(state => ({
+    //   count: state.count+1
+    // }));
+    this.setState({
+      count: this.state.count+1
+    }, ()=> {
+      // setState是异步，需要回调
+    })
+    console.log(this.state.count);
+  }
+
+  render() {
+    return <div>
+      { this.state.count } { this.state.str }
+      <br />
+      <button onClick={ ()=> { this.handleClick() } }>+1</button>
+    </div>
+  }
+}
+
 const myDiv = <div id="myDiv">
-  {a}
-  <hr />
-  {arrStr.map(element => {
-    return <p>{element}</p>
-  })}
+  <ClickBox></ClickBox>
 </div>
 
 // 3.使用React.render把虚拟DOM渲染到页面上
-ReactDOM.render(myDiv, document.getElementById("app"))
+ReactDOM.render(myDiv, document.getElementById("app")) 
